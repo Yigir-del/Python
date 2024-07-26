@@ -1,1 +1,53 @@
+Matematiksel ifadeler/
+Diğer programlama dillerinde olandan çokda farklı kurallara sahip değil her şey neredeyse aynı birkaç küçük farktan bahsedicem.
+
+-> 10//3 == 3
+-> 5**3 == 125
+Bu kadar
+
+Stringler/
+Kelimelere cümlelere string deriz.
+"ahmet"
+'ahmet'
+2 gösterimde uygundur.
+
+'Güzide' nin evi' -> hata verir çünkü ilk kesme işaretini bitirici '  sanar.
+'Güzide\' nin evi' -> hata vermez çünkü python da ( \ slash ) karakteri kaçış karakteridir.
+Kaçış karakterini daha detaylı anlatıcam.
+
+\\: Ters eğik çizgi \
+\': Tek tırnak işareti '
+\": Çift tırnak işareti "
+\n: Yeni satır (newline)
+\t: Sekme (tab)
+\r: Satır başı (carriage return)
+\b: Geri alma (backspace)
+\f: Form besleme (form feed)
+\v: Dikey sekme (vertical tab)
+
+
+Lan bide değişken tanımlayıp içine değer atamak çok kolay değişken tanımlamak diye bir şey bile yok.
+
+-> AD = "Tuğçe"
+-> AD1 = "Yiğit"
+Bu kadar
+
+-> AD + AD1 == TuğçeYiğit
+-> AD * 3 == TuğçeTuğçeTuğçe
+Bu ne lan çok kolay.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
