@@ -37,11 +37,23 @@ Bu kadar
 Bu ne lan çok kolay.
 
 
+Print/
+Lan bu fonksiyon çok güçlü her şeyi sorunsuz bastırıyo.
 
+-> print("merhaba") == merhaba
+-> print("merhaba","tuğçe") == merhaba tuğçe
+-> print("merhaba",5) == merhaba 5"
 
-
-
-
+-> print("merhaba" + 5) == hata verir (e biz zahmet)
+-> print("merhaba" + str(5)) == merhaba5
+str() == stringe çevirme fonksiyonu.
+-> print("5" + 8) == hata verir
+-> print(int("5) + 8) == hata vermez
+int() == integere çevirme fonksiyonu.
+-> print("5.5" + 5) == hata verir
+-> print(int("5.5") + 5) == hata verir
+-> print(float("5.5") + 5) == hata vermez
+float() == floata çevirme fonksiyonu.
 
 
 
