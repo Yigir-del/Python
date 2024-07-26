@@ -55,7 +55,10 @@ int() == integere çevirme fonksiyonu.
 -> print(float("5.5") + 5) == hata vermez
 float() == floata çevirme fonksiyonu.
 
-
+print("""ahmet
+mehmet
+yiğit""") 
+bu kod hatasız çalışır.
 
 
 
