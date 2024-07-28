@@ -67,7 +67,15 @@ Diyelim ki
 piton güzel şey.
 
 
+/*
+print("Oyuncu kaydetme programi:")
+ad = input("Ad: ")
+soyad = input("soyad: ")
+takim = input("takim: ")
 
+oyuncu = [ad,soyad,takim]
+print("Oyuncunun adi:{} \n Oyuncunun soyadi:{} \n oyuncunun oynadiği takim:{} ".format(oyuncu[0],oyuncu[1],oyuncu[2]))
+*/
 
 
 
