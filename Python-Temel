@@ -60,6 +60,19 @@ mehmet
 yiğit""") 
 bu kod hatasız çalışır.
 
+Diyelim ki 
+-> a = "yazilim"
+-> print(a[3:]) == ilim
+-> print(len(a)) == 7
+piton güzel şey.
+
+
+
+
+
+
+
+
 
 
 
