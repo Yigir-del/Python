@@ -23,3 +23,15 @@ for i in range(1, 11):  # 1'den 10'a kadar
     for k in range(6, 11):  # 6-10 arasındaki sütunlar
         print(f"{k} x {i} = {i*k}".ljust(12), end=" ")  
     print()  
+
+
+print("İstenilen sayıları toplayan program.")
+
+counter = 0
+while True:
+    x = input("Sayı giriniz (çıkmak için q): ")
+    if x == "q":
+        print("Toplam {}".format(counter))
+        break
+    counter += int(x)
+    
