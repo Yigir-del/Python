@@ -34,4 +34,13 @@ while True:
         print("Toplam {}".format(counter))
         break
     counter += int(x)
+
+
+
+
+print("3'e tam bölünen sayıları bulan program.")
+
+list1 = [i for i in range(1,100) if i % 3 == 0]
+print(list1)
+                                               
     
