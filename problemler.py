@@ -113,3 +113,26 @@ def Ebob(num1,num2):
     ebob = max(list3)
     print(ebob)
 Ebob(140,91)
+
+
+
+
+
+import math
+
+print("En küçük ortak kat.")
+
+def ekoks(num1,num2):
+    list1 = [i for i in range(1, num1//2+1) if num1 % i == 0]
+    list2 = [k for k in range(1, num2//2+1) if num2 % k == 0]
+    list3 = [x for x in list1 if x in list2]
+    ebob = max(list3)
+    print(num1*num2 / ebob)
+ekoks(140,91)
+
+
+
+
+
+
+
