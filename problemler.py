@@ -85,4 +85,31 @@ tambolenfonk(100)
 tambolenfonk(99)
 tambolenfonk(-10)
 
-    
+
+
+
+print("1 den 1000 e mükemmel sayılar.")
+
+def mukemmel():
+    list1 = []
+    for i in range(1,1000):
+        list2 = [k for k in range(1,(i//2)+1) if i % k == 0]
+        if sum(list2) == i:
+            list1.append(i)
+    print(list1)
+
+mukemmel()
+
+
+
+import math
+
+print("En büyük ortak bölen.")
+
+def Ebob(num1,num2):
+    list1 = [i for i in range(1, num1//2+1) if num1 % i == 0]
+    list2 = [k for k in range(1, num2//2+1) if num2 % k == 0]
+    list3 = [x for x in list1 if x in list2]
+    ebob = max(list3)
+    print(ebob)
+Ebob(140,91)
