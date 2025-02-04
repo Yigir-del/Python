@@ -63,4 +63,26 @@ print(asalfonk(100))
 print(asalfonk(1))
 print(asalfonk(-5))
 print(asalfonk(100001))
+
+
+
+
+print("Tam bölen bulma.")
+
+def tambolenfonk(num):
+    if num == 1:
+        return False
+    elif num < 1:
+        return print("Error")
+    else:
+        list2 = [i for i in range(2,num) if num % i == 0]
+        if len(list2) == 0:
+            print("{} Sayısı bir asal sayıdır.".format(num))
+        else:
+            print(list2)
+
+tambolenfonk(100)
+tambolenfonk(99)
+tambolenfonk(-10)
+
     
