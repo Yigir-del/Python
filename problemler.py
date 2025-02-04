@@ -42,5 +42,25 @@ print("3'e tam bölünen sayıları bulan program.")
 
 list1 = [i for i in range(1,100) if i % 3 == 0]
 print(list1)
-                                               
+
+
+
+print("Asal sayı bulma.")
+
+def asalfonk(num):
+    if num == 1:
+        return False
+    elif num < 1:
+        return print("Error")
+    else:
+        list2 = [i for i in range(2,num) if num % i == 0]
+        if len(list2) == 0:
+            return True
+        else:
+            return False
+
+print(asalfonk(100))
+print(asalfonk(1))
+print(asalfonk(-5))
+print(asalfonk(100001))
     
