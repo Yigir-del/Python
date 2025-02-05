@@ -134,5 +134,17 @@ ekoks(140,91)
 
 
 
+print("Pisagor üçgeni testi.")
+
+def pisagor():
+    for i in range(1,101):
+        for k in range(1,101):
+            hipotenus = (i**2 + k**2)**0.5
+            if hipotenus in range(1,101):
+                print("{} + {} = {}".format(k,i,hipotenus))
+pisagor()
+
+
+
 
 
