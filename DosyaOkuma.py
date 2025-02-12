@@ -169,6 +169,34 @@ with open("harf_notlari","r",encoding="utf-8") as file3:
 
 
 
+liste1 = []
+liste2 = []
+liste3 = []
+
+def esle(dizi):
+    dizi = dizi[:-1]  # Satır sonu karakterini kaldır
+    liste = dizi.split(",")
+    takim = liste[1].strip()  # Boşluklardan kurtul
+    futbolcu = liste[0].strip()  # Boşluklardan kurtul
+    if takim == "Galatasaray":
+        liste1.append(futbolcu + "\n")
+    elif takim == "Fenerbahçe":
+        liste2.append(futbolcu + "\n")
+    elif takim == "Beşiktaş":
+        liste3.append(futbolcu + "\n")
+
+with open("Futbolcular.txt", "r", encoding="utf-8") as file:
+    for i in file:
+        esle(i)
+
+with open("Galatasaray.txt", "w", encoding="utf-8") as file2:
+    file2.writelines(liste1)
+
+with open("Fenerbahçe.txt", "w", encoding="utf-8") as file3:
+    file3.writelines(liste2)
+
+with open("Beşiktaş.txt", "w", encoding="utf-8") as file4:
+    file4.writelines(liste3)
 
 
 
