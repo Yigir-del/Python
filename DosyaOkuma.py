@@ -90,3 +90,91 @@ with open("test","r+",encoding="utf-8") as file:
     file.writelines(liste)
 with open("test","r+",encoding="utf-8") as file:
     print(file.read())
+
+
+
+
+
+
+
+
+def harf_hesapla(dizi):
+    dizi = dizi[:-1]
+    liste = dizi.split(",")
+    ad = liste[0]
+    not1 = int(liste[1])
+    not2 = int(liste[2])
+    not3 = int(liste[3])
+    net = not1 * 1/10 + not2 * 3/10 + not3 * 6/10
+    harf_notu = ""
+    durum = ""
+    if net >= 90:
+        harf_notu = "AA"
+        durum = "Geçer"
+    elif net >= 80:
+        harf_notu = "BA"
+        durum = "Geçer"
+    elif net >= 70:
+        harf_notu = "BB"
+        durum = "Geçer"
+    elif net >= 60:
+        harf_notu = "CB"
+        durum = "Geçer"
+    elif net >= 50:
+        harf_notu = "CC"
+        durum = "Geçer"
+    elif net >= 45:
+        harf_notu = "DC"
+        durum = "Kalir"
+    elif net >= 40:
+        harf_notu = "DD"
+        durum = "Kalir"
+    else:
+        harf_notu = "FF"
+        durum = "Kalir"
+
+    if durum == "Geçer":
+        return ad + "--------------->" + harf_notu + " " + durum + "\n"
+    elif durum == "Kalir":
+        return ad + "--------------->" + harf_notu + " " + durum + "\n"
+    
+list1 = []
+list2 = []
+list3 = []
+with open("dosya.txt","r",encoding="utf-8") as file:
+    for i in file:
+        list1.append(harf_hesapla(i))
+with open("harf_notlari","w",encoding="utf-8") as file2:
+    file2.writelines(list1)
+with open("harf_notlari","r",encoding="utf-8") as file3:
+    with open("kalanlar","w",encoding="utf-8") as file4:
+        for k in file3:
+            if "Kalir" in k:
+                k = k[:-6]
+                k += "\n"
+                list2.append(k)
+                file4.writelines(list2)
+
+with open("harf_notlari","r",encoding="utf-8") as file3:
+    with open("gecenler","w",encoding="utf-8") as file4:
+        for j in file3:
+            if "Geçer" in j:
+                j = j[:-6]
+                j += "\n"
+                list2.append(j)
+                file4.writelines(list2)
+            
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
