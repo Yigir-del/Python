@@ -170,3 +170,12 @@ liste = range(1,11)
 
 cift = list(filter(lambda x : x % 2 == 0,liste))
 print(reduce(lambda x,y: x+y,cift))
+
+
+print("Ad soyad eşleştirme")
+isimler = ["Kerim","Tarik","Ezgi","Kemal","İlkay","Şükran","Merve"]
+soyisimler = ["Yilmaz","Öztürk","Dağdeviren","Atatürk","Dikmen","Kaya","Polat"]
+ad_soyad = list()
+for i in zip(isimler,soyisimler):
+    print(i)
+
