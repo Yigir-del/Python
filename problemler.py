@@ -145,6 +145,10 @@ def pisagor():
 pisagor()
 
 
+print("Alan hesap")
+def alan_hesap(liste):
+    return liste[0] * liste[1]
 
-
+kenarlar = [(3,4),(10,3),(5,6),(1,9)]
+print(list(map(alan_hesap,kenarlar)))
 
