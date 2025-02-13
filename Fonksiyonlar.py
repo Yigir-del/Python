@@ -3,11 +3,13 @@ def double(x):
     return x * 2
 print(list(map(double,[1,2,3,4,5,5,6])))
 
+
 #reduce
 from functools import reduce
 a = int(input("Bir sayi gir."))
 list = range(1,a+1)
 print(reduce(lambda x,y: x * y,list))
+
 
 #filter
 def asal_mi(sayi):
@@ -25,6 +27,7 @@ def asal_mi(sayi):
 
 print(list((filter(asal_mi,range(1,100)))))
 
+
 #zip
 list1 = ["elif","nilgün","altuntas"]
 list2 = ["yigit","efe","altuntas"]
@@ -33,6 +36,26 @@ print(list(zip(list1,list2)))
 
 for i,j in zip(list2,list1):
     print(i,j)
+
+
+#enumerate
+liste = ["ahmet","bekir","izci","yigit"]
+print(list(enumerate(liste)))
+
+for index,isim in enumerate(liste):
+    print(index,isim)
+
+
+#all,any
+liste = [False,False,False,False,True]
+liste1 = [False,False,False,False,False]
+liste2 = [True,True,True]
+print(any(liste))
+print(any(liste1))
+print(any(liste2))
+print(all(liste))
+print(all(liste1))
+print(all(liste2))
 
 
 
