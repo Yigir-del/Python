@@ -152,3 +152,13 @@ def alan_hesap(liste):
 kenarlar = [(3,4),(10,3),(5,6),(1,9)]
 print(list(map(alan_hesap,kenarlar)))
 
+
+print("Ucgen olma testi")
+liste = [(3,4,5),(6,8,10),(3,10,7)]
+def ucgen_testi(tup):
+    if tup[0] + tup[1] > tup[2]:
+        if tup[1] + tup[2] > tup[0]:
+            if tup[2] + tup[0] > tup[1]:
+                return True
+    return False
+print(list(filter(ucgen_testi,liste)))
