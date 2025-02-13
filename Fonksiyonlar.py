@@ -24,3 +24,15 @@ def asal_mi(sayi):
         return True
 
 print(list((filter(asal_mi,range(1,100)))))
+
+#zip
+list1 = ["elif","nilgün","altuntas"]
+list2 = ["yigit","efe","altuntas"]
+
+print(list(zip(list1,list2)))
+
+for i,j in zip(list2,list1):
+    print(i,j)
+
+
+
