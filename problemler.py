@@ -162,3 +162,11 @@ def ucgen_testi(tup):
                 return True
     return False
 print(list(filter(ucgen_testi,liste)))
+
+
+print("Cift sayilari toplayan fonksiyon")
+from functools import reduce
+liste = range(1,11)
+
+cift = list(filter(lambda x : x % 2 == 0,liste))
+print(reduce(lambda x,y: x+y,cift))
