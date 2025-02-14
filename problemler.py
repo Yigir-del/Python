@@ -157,3 +157,37 @@ print("\nAd-Soyad Eşleşmeleri")
 names = ["Kerim", "Tarik", "Ezgi", "Kemal", "İlkay", "Şükran", "Merve"]
 surnames = ["Yilmaz", "Öztürk", "Dağdeviren", "Atatürk", "Dikmen", "Kaya", "Polat"]
 print(match_names(names, surnames))
+
+
+#Frenkans hesaplama.
+class Dizi:
+    def __init__(self, dizgi):
+        self.dizgi = dizgi
+    
+    def frekans(self):
+        harf_dict = dict()
+        for i in self.dizgi:
+            if i in harf_dict:
+                harf_dict[i] = str(int(harf_dict[i]) + 1)
+            else:
+                harf_dict[i] = "1"
+        for i, j in harf_dict.items():
+            print("{} -> {}".format(i, j))
+
+# Sınıf örneği oluşturulup metot çağrılır
+dizi = Dizi("ProgramlamaOdeviileriSeviyeVeriYapilariveObjeleripynb")
+dizi.frekans()
+
+
+#Baş harf birleştirme
+with open("siir.txt","r",encoding="utf-8") as file:
+    dize_liste = list()
+    bas_harf_liste = list()
+    for satir in file:
+        satir = satir.strip()
+        dize_liste.append(satir)
+
+    for i in dize_liste:
+        bas_harf_liste.append(i[0])
+    bas_harf_liste = "".join(bas_harf_liste)
+    print(bas_harf_liste)
