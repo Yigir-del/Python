@@ -98,7 +98,48 @@ print(string4.find("o"))    # 4 (İlk geçen "o" karakterinin indeksini döndür
 print(string4.find("z"))    # -1 (Bulamazsa -1 döndürür)
 print(string4.rfind("o"))   # 17 (Sağdan başlayarak ilk geçen "o" karakterinin indeksini döndürür)
 
+
+
 # Liste işlemleri
 dizi = ["27", "01", "2005"]
 print("/".join(dizi))  # "27/01/2005" (Liste elemanlarını belirtilen karakter ile birleştirir)
 
+# Bir liste başlatma
+my_list = [1, 2, 3, 4]
+
+# Listeye bir eleman ekleme
+my_list.append(6)
+
+# İki yeni liste oluşturuluyor
+list1 = [1, 2, 3, 4, 5, 6]
+list2 = [7, 8, 9, 0, "sdf"]
+
+# list1'i, list2'nin tüm elemanlarıyla genişletme
+list1.extend(list2)
+print(list1)  # list1'in, list2 ile genişledikten sonraki hâlini yazdırma
+
+# list1'e, belirtilen indeks numarasına yeni bir eleman ekleme
+list1.insert(2, "Python")
+print(list1)  # list1'in, eleman ekleme işleminden sonraki hâlini yazdırma
+
+# list1'den son elemanı çıkarma
+list1.pop()
+print(list1)  # list1'in, son elemanı çıkarıldıktan sonraki hâlini yazdırma
+
+# list1'den belirli bir elemanı çıkarma
+list1.remove("Python")
+print(list1)  # list1'in, "Python" elemanı çıkarıldıktan sonraki hâlini yazdırma
+
+# list1 içinde belirli bir elemanın ilk bulunduğu indeks numarasını bulma
+print(list1.index(3))  # '3' elemanının listede bulunduğu indeks numarasını yazdırma
+
+# list1'de belirli bir elemanın kaç kez tekrar ettiğini sayma
+print(list1.count(1))  # '1' elemanının listede kaç kez geçtiğini yazdırma
+
+# list1'i artan sıraya göre sıralama
+list1.sort()
+print(list1)  # list1'in artan sıraya göre sıralandıktan sonraki hâlini yazdırma
+
+# list1'i azalan sıraya göre sıralama
+list1.sort(reverse=True)
+print(list1)  # list1'in azalan sıraya göre sıralandıktan sonraki hâlini yazdırma
