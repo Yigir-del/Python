@@ -1,103 +1,100 @@
 class Araba:
-    marka = "reno"
-    silindir = 4
-    beygir = 110
-
-araba = Araba()
-araba.beygir = 120
-print(araba.beygir)
-
-
-class Araba2:
-    def __init__(self,marka,silindir,beygir):
+    """
+    Basit bir Araba sınıfı. Varsayılan marka, silindir sayısı ve beygir gücü ile oluşturulur.
+    """
+    def __init__(self, marka="Renault", silindir=4, beygir=110):
         self.marka = marka
         self.silindir = silindir
         self.beygir = beygir
-        print("init çalışıyor")
 
+    def set_beygir(self, yeni_beygir):
+        """Arabanın beygir gücünü günceller."""
+        self.beygir = yeni_beygir
 
-araba2 = Araba2("renoult","4",110)
-print(araba2.beygir)
-print(araba2.marka)
-print(araba2.silindir)
-help(Araba2)
-
+araba = Araba()
+araba.set_beygir(120)
+print(f"Güncellenmiş Beygir Gücü: {araba.beygir}")
 
 
 class Yazilimci:
-    def __init__(self,tecrube,maas,bildigi_diller,yas):
+    """
+    Yazılım geliştiricilerini modelleyen bir sınıf.
+    """
+    def __init__(self, tecrube: int, maas: float, bildigi_diller: list, yas: int):
         self.tecrube = tecrube
         self.maas = maas
         self.bildigi_diller = bildigi_diller
         self.yas = yas
-        print("Kisi eklendi.")
+        print("Yeni bir yazılımcı oluşturuldu.")
     
-    def goster(self):
-        print("""
-        Tecrube = {}
-        
-        Maas = {}
-        
-        Bildigi diller = {}
+    def bilgileri_goster(self):
+        """Yazılımcının bilgilerini ekrana yazdırır."""
+        print(f"""
+        Tecrübe: {self.tecrube} yıl
+        Maaş: {self.maas} TL
+        Bildiği Diller: {', '.join(self.bildigi_diller)}
+        Yaş: {self.yas}
+        """)
 
-        Yas = {}
-        """.format(self.tecrube,self.maas,self.bildigi_diller,self.yas))
-
-    def zam_yap(self,miktar):
-        print("Zam yapiliyor...")
+    def zam_yap(self, miktar: float):
+        """Maaşa zam yapar."""
         self.maas += miktar
-    def dil_ekle(self,dil):
-        print("Dil ekleniyor...")
-        self.bildigi_diller.append(dil)
-    def deneyim(self,sure):
-        print("Deneyim arttiriliyor")
-        self.tecrube += sure
+        print(f"Yeni maaş: {self.maas} TL")
 
-yazilimci = Yazilimci(10,40000,["java","C","javaScript"],30)
-yazilimci.goster()
+    def dil_ekle(self, dil: str):
+        """Yazılımcının bildiği dillere yeni bir programlama dili ekler."""
+        if dil not in self.bildigi_diller:
+            self.bildigi_diller.append(dil)
+            print(f"{dil} dili eklendi.")
+        else:
+            print(f"{dil} dili zaten mevcut.")
+
+
+# Yazılımcı nesnesi oluşturma
+yazilimci = Yazilimci(10, 40000, ["Java", "C", "JavaScript"], 30)
+yazilimci.bilgileri_goster()
 yazilimci.dil_ekle("C#")
-yazilimci.goster()
 yazilimci.zam_yap(1000)
-yazilimci.goster()
-
-
-
-
-
-
-
-
-
+yazilimci.bilgileri_goster()
 
 
 class Calisan:
-    def __init__(self,maas,tecrube,departman):
-        print("Calisan sinifinin init fonksiyonu calisiyor..")
+    """
+    Çalışanları modelleyen temel sınıf.
+    """
+    def __init__(self, maas: float, tecrube: int, departman: str):
         self.maas = maas
         self.tecrube = tecrube
         self.departman = departman
-    def bastir(self):
-        print("""
-        Departmani = {}
-        Tecrubesi = {}
-        Maasi = {}
-        """.format(self.departman,self.tecrube,self.maas))
-    def zam_yap(self,zam):
-        print("Zam yapiliyor..")
-        self.maas += zam
-#calisan = Calisan(3000,4,"Bilisim")
-#calisan.bastir()
-        
-class Yonetici(Calisan):
-    def __init__(self,departman,tecrube,maas,kisi):
-        super().__init__(maas,tecrube,departman)
-        print("Yonetici class ının init methodu çalisiyor.."),
-        self.kisi = kisi
-    def bastir(self):
-        print("""
-        {}
-        Sorumlu olunan kisi sayisi = {}
+    
+    def bilgileri_goster(self):
+        """Çalışanın bilgilerini ekrana yazdırır."""
+        print(f"""
+        Departman: {self.departman}
+        Tecrübe: {self.tecrube} yıl
+        Maaş: {self.maas} TL
+        """)
+    
+    def zam_yap(self, miktar: float):
+        """Çalışanın maaşına zam yapar."""
+        self.maas += miktar
+        print(f"Yeni maaş: {self.maas} TL")
 
-        """.format(super().bastir(),self.kisi))
-yonetici = Yonetici("Yonetim",15,10000,20)
-yonetici.bastir()
+
+class Yonetici(Calisan):
+    """
+    Yönetici sınıfı, Çalışan sınıfından türetilmiştir ve ek olarak sorumlu olduğu kişi sayısını içerir.
+    """
+    def __init__(self, departman: str, tecrube: int, maas: float, sorumlu_kisi: int):
+        super().__init__(maas, tecrube, departman)
+        self.sorumlu_kisi = sorumlu_kisi
+
+    def bilgileri_goster(self):
+        """Yöneticinin bilgilerini ekrana yazdırır."""
+        super().bilgileri_goster()
+        print(f"Sorumlu Olunan Kişi Sayısı: {self.sorumlu_kisi}")
+
+
+# Yönetici nesnesi oluşturma
+yonetici = Yonetici("Yönetim", 15, 10000, 20)
+yonetici.bilgileri_goster()
