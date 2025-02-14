@@ -58,4 +58,23 @@ print(all(liste1))
 print(all(liste2))
 
 
+#Açıklamaya üşendiğim bazı şeyler daha
+num = 100
+print(num)
+print(bin(num))
+print(hex(num))
+
+num1 = -5
+print(abs(num1))  #mutlak deger
+
+print(round(3.5))
+print(round(3.6))
+print(round(3.4))
+
+print(max(3,4,5,6,-2,34))
+print(min(3,4,5,6,-2,34))
+
+print(sum([3,4,5,1,4,5]))
+
+print(pow(2,4)) #2**4
 
