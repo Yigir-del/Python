@@ -79,7 +79,7 @@ print("Oyuncunun adi:{} \n Oyuncunun soyadi:{} \n oyuncunun oynadiği takim:{} "
 
 
 
-#Açıklamaya üşeniyorum kendin çöz ne iş yaptıklarını
+#Açıklamaya üşeniyorum kendin çöz ne iş yaptıklarını 
 num = 100
 print(num)
 print(bin(num))
@@ -101,7 +101,33 @@ print(pow(2,4)) #2**4
 
 
 
+#Açıklamaya üşendiğim string ve dizi methodları.
+string1 = "pyTHon"
+print(string1)
+print(string1.upper())
+print(string1.lower())
 
+string2 = "Herkes ana baba baci gardas"
+print(string2)
+print(string2.replace("a","o"))
+print(string2.replace(" ","-"))
+
+string3 = "Adana Demir Spor"
+print(string3.startswith("Ad"))
+print(string3.endswith("or"))
+
+string4 = "Python programlama dili"
+print(string4.split(" "))
+print(string4.strip("P"))  #aradığın başta veya sondaysa siler
+print(string4.lstrip("i")) #aradığın sondaysa siler
+print(string4.rstrip("i")) #aradığın baştaysa siler
+print(string4.count(" "))
+print(string4.find("o"))
+print(string4.find("z"))
+print(string4.rfind("o"))
+
+dizi = ["27","01","2005"]
+print("/".join(dizi))
 
 
 
