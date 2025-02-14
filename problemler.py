@@ -1,181 +1,159 @@
-print("Armstrong sayısı programı.")
+# Armstrong Sayısı Kontrol Programı
 
-x = input("Bir sayı giriniz: ")
-list1 = [int(a)**len(x) for a in x]
-sumlist = sum(list1)
-if sumlist == int(x):
-    print(f"{x} sayısı bir armstrong sayısıdır.")
+def is_armstrong(number: int) -> bool:
+    """Verilen sayının Armstrong sayısı olup olmadığını kontrol eder."""
+    str_num = str(number)
+    return sum(int(digit) ** len(str_num) for digit in str_num) == number
+
+number = int(input("Bir sayı giriniz: "))
+if is_armstrong(number):
+    print(f"{number} bir Armstrong sayısıdır.")
 else:
-    print(f"{x} sayısı bir armstrong sayısı değildir. {sumlist}")
+    print(f"{number} bir Armstrong sayısı değildir.")
 
+# Çarpım Tablosu
 
+def print_multiplication_table():
+    """1-10 arasındaki sayıların çarpım tablosunu ekrana yazdırır."""
+    for i in range(1, 11):
+        for j in range(1, 11):
+            print(f"{j} x {i} = {i * j}".ljust(12), end=" ")
+            if j == 5:
+                print(" ")  # İlk 5 sütundan sonra boşluk bırak
+        print()
 
-print("Çarpım Tablosu Programı\n")
+print("\nÇarpım Tablosu Programı\n")
+print_multiplication_table()
 
-for i in range(1, 11):  # 1'den 10'a kadar
-    for k in range(1, 6):  # İlk 5 sütun
-        print(f"{k} x {i} = {i*k}".ljust(12), end=" ")  # Sabit genişlikte hizala
-    print()  # Her satırdan sonra alt satıra geç
+# Kullanıcıdan Sayı Alarak Toplama İşlemi
 
-print()  # İki tabloyu ayırmak için boşluk
+def sum_input_numbers():
+    """Kullanıcı tarafından girilen sayıları toplar, çıkmak için 'q' kullanılabilir."""
+    total = 0
+    while True:
+        user_input = input("Sayı giriniz (çıkmak için q): ")
+        if user_input.lower() == "q":
+            print(f"Toplam: {total}")
+            break
+        total += int(user_input)
 
-for i in range(1, 11):  # 1'den 10'a kadar
-    for k in range(6, 11):  # 6-10 arasındaki sütunlar
-        print(f"{k} x {i} = {i*k}".ljust(12), end=" ")  
-    print()  
+sum_input_numbers()
 
+# 3'e Tam Bölünen Sayıları Bulma
 
-print("İstenilen sayıları toplayan program.")
+def find_divisible_by_three(limit: int) -> list:
+    """Belirtilen limit içinde 3'e tam bölünen sayıları döndürür."""
+    return [num for num in range(1, limit) if num % 3 == 0]
 
-counter = 0
-while True:
-    x = input("Sayı giriniz (çıkmak için q): ")
-    if x == "q":
-        print("Toplam {}".format(counter))
-        break
-    counter += int(x)
+print("\n3'e tam bölünen sayılar:")
+print(find_divisible_by_three(100))
 
+# Asal Sayı Kontrolü
 
-
-
-print("3'e tam bölünen sayıları bulan program.")
-
-list1 = [i for i in range(1,100) if i % 3 == 0]
-print(list1)
-
-
-
-print("Asal sayı bulma.")
-
-def asalfonk(num):
-    if num == 1:
+def is_prime(number: int) -> bool:
+    """Verilen sayının asal olup olmadığını kontrol eder."""
+    if number < 2:
         return False
-    elif num < 1:
-        return print("Error")
-    else:
-        list2 = [i for i in range(2,num) if num % i == 0]
-        if len(list2) == 0:
-            return True
-        else:
+    for i in range(2, int(number ** 0.5) + 1):
+        if number % i == 0:
             return False
+    return True
 
-print(asalfonk(100))
-print(asalfonk(1))
-print(asalfonk(-5))
-print(asalfonk(100001))
+print("\nAsal Sayı Testi")
+print(is_prime(100))
+print(is_prime(7))
+print(is_prime(1))
 
+# Bir Sayının Tam Bölenlerini Bulma
 
+def find_divisors(number: int) -> list:
+    """Verilen sayının tam bölenlerini bulur."""
+    return [i for i in range(1, number + 1) if number % i == 0]
 
+print("\nTam Bölenler:")
+print(find_divisors(100))
+print(find_divisors(99))
 
-print("Tam bölen bulma.")
+# Mükemmel Sayıları Bulma
 
-def tambolenfonk(num):
-    if num == 1:
-        return False
-    elif num < 1:
-        return print("Error")
-    else:
-        list2 = [i for i in range(2,num) if num % i == 0]
-        if len(list2) == 0:
-            print("{} Sayısı bir asal sayıdır.".format(num))
-        else:
-            print(list2)
+def find_perfect_numbers(limit: int) -> list:
+    """Belirtilen limit içerisindeki mükemmel sayıları bulur."""
+    return [num for num in range(1, limit) if sum(find_divisors(num)[:-1]) == num]
 
-tambolenfonk(100)
-tambolenfonk(99)
-tambolenfonk(-10)
+print("\n1'den 1000'e kadar olan mükemmel sayılar:")
+print(find_perfect_numbers(1000))
 
+# EBOB Hesaplama
 
+def calculate_gcd(a: int, b: int) -> int:
+    """İki sayının en büyük ortak bölenini (EBOB) hesaplar."""
+    while b:
+        a, b = b, a % b
+    return a
 
+print("\nEBOB Hesaplama")
+print(calculate_gcd(140, 91))
 
-print("1 den 1000 e mükemmel sayılar.")
+# EKOK Hesaplama
 
-def mukemmel():
-    list1 = []
-    for i in range(1,1000):
-        list2 = [k for k in range(1,(i//2)+1) if i % k == 0]
-        if sum(list2) == i:
-            list1.append(i)
-    print(list1)
+def calculate_lcm(a: int, b: int) -> int:
+    """İki sayının en küçük ortak katını (EKOK) hesaplar."""
+    return (a * b) // calculate_gcd(a, b)
 
-mukemmel()
+print("\nEKOK Hesaplama")
+print(calculate_lcm(140, 91))
 
+# Pisagor Üçgeni Bulma
 
+def find_pythagorean_triples(limit: int):
+    """Belirtilen limit içinde Pisagor üçgenlerini bulur."""
+    for a in range(1, limit):
+        for b in range(a, limit):
+            c = (a ** 2 + b ** 2) ** 0.5
+            if c.is_integer():
+                print(f"{a}, {b}, {int(c)}")
 
-import math
+print("\nPisagor Üçgenleri")
+find_pythagorean_triples(100)
 
-print("En büyük ortak bölen.")
+# Alan Hesaplama
 
-def Ebob(num1,num2):
-    list1 = [i for i in range(1, num1//2+1) if num1 % i == 0]
-    list2 = [k for k in range(1, num2//2+1) if num2 % k == 0]
-    list3 = [x for x in list1 if x in list2]
-    ebob = max(list3)
-    print(ebob)
-Ebob(140,91)
+def calculate_area(dimensions: tuple) -> int:
+    """Bir dikdörtgenin alanını hesaplar."""
+    return dimensions[0] * dimensions[1]
 
+print("\nDikdörtgen Alanları")
+shapes = [(3, 4), (10, 3), (5, 6), (1, 9)]
+print(list(map(calculate_area, shapes)))
 
+# Üçgen Olup Olmadığını Kontrol Etme
 
+def is_triangle(sides: tuple) -> bool:
+    """Verilen kenar uzunlukları ile üçgen oluşturulup oluşturulamayacağını kontrol eder."""
+    a, b, c = sorted(sides)
+    return a + b > c
 
+print("\nÜçgen Olma Testi")
+triangles = [(3, 4, 5), (6, 8, 10), (3, 10, 7)]
+print(list(filter(is_triangle, triangles)))
 
-import math
-
-print("En küçük ortak kat.")
-
-def ekoks(num1,num2):
-    list1 = [i for i in range(1, num1//2+1) if num1 % i == 0]
-    list2 = [k for k in range(1, num2//2+1) if num2 % k == 0]
-    list3 = [x for x in list1 if x in list2]
-    ebob = max(list3)
-    print(num1*num2 / ebob)
-ekoks(140,91)
-
-
-
-
-
-print("Pisagor üçgeni testi.")
-
-def pisagor():
-    for i in range(1,101):
-        for k in range(1,101):
-            hipotenus = (i**2 + k**2)**0.5
-            if hipotenus in range(1,101):
-                print("{} + {} = {}".format(k,i,hipotenus))
-pisagor()
-
-
-print("Alan hesap")
-def alan_hesap(liste):
-    return liste[0] * liste[1]
-
-kenarlar = [(3,4),(10,3),(5,6),(1,9)]
-print(list(map(alan_hesap,kenarlar)))
-
-
-print("Ucgen olma testi")
-liste = [(3,4,5),(6,8,10),(3,10,7)]
-def ucgen_testi(tup):
-    if tup[0] + tup[1] > tup[2]:
-        if tup[1] + tup[2] > tup[0]:
-            if tup[2] + tup[0] > tup[1]:
-                return True
-    return False
-print(list(filter(ucgen_testi,liste)))
-
-
-print("Cift sayilari toplayan fonksiyon")
+# Çift Sayıları Toplama
 from functools import reduce
-liste = range(1,11)
 
-cift = list(filter(lambda x : x % 2 == 0,liste))
-print(reduce(lambda x,y: x+y,cift))
+def sum_even_numbers(numbers: list) -> int:
+    """Verilen sayı listesindeki çift sayıların toplamını döndürür."""
+    return reduce(lambda x, y: x + y, filter(lambda x: x % 2 == 0, numbers))
 
+print("\nÇift Sayıların Toplamı")
+print(sum_even_numbers(list(range(1, 11))))
 
-print("Ad soyad eşleştirme")
-isimler = ["Kerim","Tarik","Ezgi","Kemal","İlkay","Şükran","Merve"]
-soyisimler = ["Yilmaz","Öztürk","Dağdeviren","Atatürk","Dikmen","Kaya","Polat"]
-ad_soyad = list()
-for i in zip(isimler,soyisimler):
-    print(i)
+# Ad-Soyad Eşleştirme
 
+def match_names(names: list, surnames: list):
+    """İsim ve soyisimleri eşleştirerek çıktı olarak verir."""
+    return list(zip(names, surnames))
+
+print("\nAd-Soyad Eşleşmeleri")
+names = ["Kerim", "Tarik", "Ezgi", "Kemal", "İlkay", "Şükran", "Merve"]
+surnames = ["Yilmaz", "Öztürk", "Dağdeviren", "Atatürk", "Dikmen", "Kaya", "Polat"]
+print(match_names(names, surnames))
