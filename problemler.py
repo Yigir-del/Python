@@ -191,3 +191,40 @@ with open("siir.txt","r",encoding="utf-8") as file:
         bas_harf_liste.append(i[0])
     bas_harf_liste = "".join(bas_harf_liste)
     print(bas_harf_liste)
+
+
+
+def mail_test(mail_list):
+    true_mail_extensions = [".com",".net",".org",".edu",".gov",".co.uk",".io",".us",".de",".fr",".tr",".xyz",".info",".biz",".online",".me"]
+
+    true_mail = list()
+    false_mail = list()
+
+
+    for mail in mail_list:
+        mail = mail.strip()
+
+        if "@" in mail:
+            domain_part = mail.split("@")[-1]
+
+            if any(domain_part.endswith(ext) for ext in true_mail_extensions):
+                true_mail.append(mail)
+            else:
+                false_mail.append(mail)
+
+        else:
+            false_mail.append(mail)
+        
+    print("""True mails
+          {} -> {} tane
+          """.format(true_mail,len(true_mail)))
+    
+    print("""False mails
+          {} -> {} tane
+          """.format(false_mail,len(false_mail)))
+
+with open("mailler.txt","r",encoding="utf-8") as file:
+    mails = [line.strip() for line in file]
+
+mail_test(mails)
+
