@@ -228,3 +228,18 @@ with open("mailler.txt","r",encoding="utf-8") as file:
 
 mail_test(mails)
 
+
+
+isims = ["Kerim","Tarik","Ezgi","Kemal","Ilkay","Sukran","Merve"]
+soyisim = ["Yilmaz","Öztürk","Dağdeviren","Atatürk","Dikmen","Kaya","Polat"]
+
+full_name = dict(zip(isims,soyisim))
+sorted_full_name = list()
+
+isims = sorted(isims)
+
+sorted_full_name = [isim + full_name[isim] for isim in isims] 
+
+print(sorted_full_name)
+
+
