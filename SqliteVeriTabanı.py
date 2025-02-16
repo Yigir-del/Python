@@ -1,48 +1,68 @@
 import sqlite3
 
-# SQLite veritabanına bağlantı kurulması
+# SQLite veritabanına bağlan
 con = sqlite3.connect("kütüphane.db")
+
+# Veritabanı işlemleri için bir imleç (cursor) oluştur
 cursor = con.cursor()
 
-# "kitaplik" adlı tablonun oluşturulması
-# Eğer tablo mevcut değilse, yeniden oluşturulmadan var olan tablo kullanılacaktır.
 def tablo_olustur():
+    """
+    Eğer 'kitaplik' adlı bir tablo mevcut değilse, bu tabloyu oluşturur.
+    Tabloda aşağıdaki sütunlar bulunur:
+    - İsim (TEXT): Kitap adı
+    - Yazar (TEXT): Kitabın yazarı
+    - Yayınevi (TEXT): Kitabın yayınevi
+    - Sayfa_Sayısı (INTEGER): Kitabın toplam sayfa sayısı
+    """
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS kitaplik (
             İsim TEXT,
             Yazar TEXT,
             Yayınevi TEXT,
-            Sayfa_Sayısı INT
+            Sayfa_Sayısı INTEGER
         )
     """)
     con.commit()
 
-tablo_olustur()
-
-# Öntanımlı veri ekleme fonksiyonu
 def veri_ekle():
+    """Örnek bir kitabı 'kitaplik' tablosuna ekler."""
     cursor.execute("""
-        INSERT INTO kitaplik (İsim, Yazar, Yayınevi, Sayfa_Sayısı)
-        VALUES ('İstanbul Hatırası', 'Ahmet Ümit', 'Everest', 561)
+        INSERT INTO kitaplik VALUES ('İstanbul Hatırası', 'Ahmet Ümit', 'Everest', 561)
     """)
     con.commit()
 
-# Parametre ile veri ekleme fonksiyonu
 def veri_ekle2(isim, yazar, yayinevi, sayfa_sayisi):
+    """Parametre olarak verilen kitap bilgilerini 'kitaplik' tablosuna ekler."""
     cursor.execute("""
-        INSERT INTO kitaplik (İsim, Yazar, Yayınevi, Sayfa_Sayısı)
-        VALUES (?, ?, ?, ?)
+        INSERT INTO kitaplik VALUES (?, ?, ?, ?)
     """, (isim, yazar, yayinevi, sayfa_sayisi))
     con.commit()
 
-# Kullanıcıdan kitap bilgilerini alma
-isim = input("Kitap İsmi: ")
-yazar = input("Yazar: ")
-yayinevi = input("Yayınevi: ")
-sayfa_sayisi = int(input("Sayfa Sayısı: "))
+def verileri_al():
+    """'kitaplik' tablosundaki tüm kayıtları getirir ve ekrana yazdırır."""
+    cursor.execute("SELECT * FROM kitaplik")
+    liste = cursor.fetchall()
+    print("Kitaplık tablosunun içerikleri:")
+    for kayit in liste:
+        print(kayit)
 
-# Girilen verilerin veritabanına eklenmesi
-veri_ekle2(isim, yazar, yayinevi, sayfa_sayisi)
+def verileri_al2():
+    """'kitaplik' tablosundaki kitap isimlerini ve yazarlarını getirir ve ekrana yazdırır."""
+    cursor.execute("SELECT İsim, Yazar FROM kitaplik")
+    liste = cursor.fetchall()
+    for kayit in liste:
+        print(kayit)
 
-# Veritabanı bağlantısının kapatılması
+def verileri_al3(yayinevi):
+    """Belirtilen yayınevine ait kitapları getirir ve ekrana yazdırır."""
+    cursor.execute("SELECT * FROM kitaplik WHERE Yayınevi = ?", (yayinevi,))
+    liste = cursor.fetchall()
+    for kayit in liste:
+        print(kayit)
+
+# Örnek bir sorgu çalıştır
+verileri_al3("Everest")
+
+# Veritabanı bağlantısını kapat
 con.close()
