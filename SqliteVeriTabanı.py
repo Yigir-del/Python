@@ -2,20 +2,11 @@ import sqlite3
 
 # SQLite veritabanına bağlantı kurulması
 con = sqlite3.connect("kütüphane.db")
-
-# Veritabanı işlemleri için bir cursor (imleç) oluşturulması
 cursor = con.cursor()
 
-# Tablo oluşturma fonksiyonu
+# "kitaplik" adlı tablonun oluşturulması
+# Eğer tablo mevcut değilse, yeniden oluşturulmadan var olan tablo kullanılacaktır.
 def tablo_olustur():
-    """
-    Eğer 'kitaplik' adında bir tablo mevcut değilse, bu tabloyu oluşturur.
-    Tablo, aşağıdaki sütunlardan oluşmaktadır:
-        - İsim (Metin)
-        - Yazar (Metin)
-        - Yayınevi (Metin)
-        - Sayfa Sayısı (Tamsayı)
-    """
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS kitaplik (
             İsim TEXT,
@@ -24,11 +15,34 @@ def tablo_olustur():
             Sayfa_Sayısı INT
         )
     """)
-    # Yapılan değişikliklerin veritabanına işlenmesi
     con.commit()
 
-# Fonksiyon çağrılarak tablonun oluşturulması
 tablo_olustur()
+
+# Öntanımlı veri ekleme fonksiyonu
+def veri_ekle():
+    cursor.execute("""
+        INSERT INTO kitaplik (İsim, Yazar, Yayınevi, Sayfa_Sayısı)
+        VALUES ('İstanbul Hatırası', 'Ahmet Ümit', 'Everest', 561)
+    """)
+    con.commit()
+
+# Parametre ile veri ekleme fonksiyonu
+def veri_ekle2(isim, yazar, yayinevi, sayfa_sayisi):
+    cursor.execute("""
+        INSERT INTO kitaplik (İsim, Yazar, Yayınevi, Sayfa_Sayısı)
+        VALUES (?, ?, ?, ?)
+    """, (isim, yazar, yayinevi, sayfa_sayisi))
+    con.commit()
+
+# Kullanıcıdan kitap bilgilerini alma
+isim = input("Kitap İsmi: ")
+yazar = input("Yazar: ")
+yayinevi = input("Yayınevi: ")
+sayfa_sayisi = int(input("Sayfa Sayısı: "))
+
+# Girilen verilerin veritabanına eklenmesi
+veri_ekle2(isim, yazar, yayinevi, sayfa_sayisi)
 
 # Veritabanı bağlantısının kapatılması
 con.close()
