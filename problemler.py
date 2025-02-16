@@ -245,7 +245,7 @@ with open("mailler.txt","r",encoding="utf-8") as file:
 mail_test(mails)
 
 
-
+#isme göre alfabetik ad soyad
 isims = ["Kerim","Tarik","Ezgi","Kemal","Ilkay","Sukran","Merve"]
 soyisim = ["Yilmaz","Öztürk","Dağdeviren","Atatürk","Dikmen","Kaya","Polat"]
 
@@ -259,3 +259,10 @@ sorted_full_name = [isim + full_name[isim] for isim in isims]
 print(sorted_full_name)
 
 
+isim = ["Kerim","Tarik","Ezgi","Kemal","Ilkay","Sukran","Merve"]
+soyisim = ["Yilmaz","ozturk","Dagdeviren","Ataturk","Dikmen","Kaya","Polat"]
+
+ad_soyad = dict(zip(isim,soyisim))
+sisim = sorted(isim)
+sorted_ad_soyad = [ isim + " " + ad_soyad[isim] for isim in sisim]
+print(sorted_ad_soyad)
