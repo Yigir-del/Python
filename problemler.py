@@ -193,7 +193,23 @@ with open("siir.txt","r",encoding="utf-8") as file:
     print(bas_harf_liste)
 
 
+class String:
+    def __init__(self,liste):
+        self.liste = liste
 
+    def bas_harf(self):
+        bas_harf_list = "".join(dize[0] for dize in self.liste if dize)
+        print(bas_harf_list)
+
+with open("siir.txt","r",encoding="utf-8") as file:
+    dize_list = [dize.strip() for dize in file]
+
+string = String(dize_list)
+string.bas_harf()
+
+
+
+#mail kontrol
 def mail_test(mail_list):
     true_mail_extensions = [".com",".net",".org",".edu",".gov",".co.uk",".io",".us",".de",".fr",".tr",".xyz",".info",".biz",".online",".me"]
 
