@@ -90,3 +90,53 @@ print(any(liste2))    # Liste içinde en az bir True var mı?
 print(all(liste))     # Liste içindeki tüm öğeler True mu?
 print(all(liste1))    # Liste içindeki tüm öğeler True mu?
 print(all(liste2))    # Liste içindeki tüm öğeler True mu?
+
+
+
+
+
+
+
+                    ***************************************************DECORATORLAR***************************************************
+Brain dmg %100
+                    
+def my_decorator(func):
+    def wrapper(liste):  # Tek bir parametre almalı
+        mukemmeller = []
+        for i in liste:  # Burada artık listeyi doğru şekilde gezebiliriz
+            if i < 2:
+                continue
+            if sum(b for b in range(1, i // 2 + 1) if i % b == 0) == i:
+                mukemmeller.append(i)
+
+        print("Mükemmel Sayılar:", mukemmeller)
+        return func(liste)  # Fonksiyonu liste ile çağırıyoruz
+    
+    return wrapper    
+
+    
+
+@my_decorator
+def asal_yaz(liste):
+    asallar = list()
+    for i in liste:
+        if i < 2:  # 0 ve 1 asal değil
+            continue
+        if i == 2:  # 2 asal bir sayı
+            asallar.append(i)
+            continue
+
+        # Asallık kontrolü (kareköküne kadar)
+        for j in range(2, int(i ** 0.5) + 1):
+            if i % j == 0:
+                break  # Asal değilse döngüden çık
+        else:
+            asallar.append(i)  # Eğer hiç bölünmediyse asal sayıdır
+
+    print(asallar)
+
+asal_yaz(range(1000))
+
+
+
+                        
