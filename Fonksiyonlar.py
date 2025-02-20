@@ -101,42 +101,30 @@ print(all(liste2))    # Liste içindeki tüm öğeler True mu?
 Brain dmg %100
                     
 def my_decorator(func):
-    def wrapper(liste):  # Tek bir parametre almalı
+    def wrapper(iter):
         mukemmeller = []
-        for i in liste:  # Burada artık listeyi doğru şekilde gezebiliriz
-            if i < 2:
+        for sayi in iter:
+            if 0 < sayi < 2:
                 continue
-            if sum(b for b in range(1, i // 2 + 1) if i % b == 0) == i:
-                mukemmeller.append(i)
-
-        print("Mükemmel Sayılar:", mukemmeller)
-        return func(liste)  # Fonksiyonu liste ile çağırıyoruz
-    
-    return wrapper    
-
-    
+            if sayi >= 2:
+                bolenler = [i for i in range(1,sayi//2 + 1) if sayi % i == 0]
+                if sum(bolenler) == sayi:
+                    mukemmeller.append(sayi)
+        print(f"{mukemmeller} sayilari mukemmel sayilardir range: {len(iter)}")
+        asal_sayilar = func(iter)
+        return f"{asal_sayilar} sayilari asal sayilardir range: {len(iter)}"
+    return wrapper 
 
 @my_decorator
-def asal_yaz(liste):
-    asallar = list()
-    for i in liste:
-        if i < 2:  # 0 ve 1 asal değil
+def asal_bul(iter):
+    asallar = []
+    for sayi in iter:
+        if 0 < sayi < 2:
             continue
-        if i == 2:  # 2 asal bir sayı
-            asallar.append(i)
-            continue
+        if sayi >= 2:
+            sorgu = [sayi % i == 0 for i in range(2,int(sayi**0.5) + 1)]
+            if not any(sorgu):
+                asallar.append(sayi)
+    return asallar
 
-        # Asallık kontrolü (kareköküne kadar)
-        for j in range(2, int(i ** 0.5) + 1):
-            if i % j == 0:
-                break  # Asal değilse döngüden çık
-        else:
-            asallar.append(i)  # Eğer hiç bölünmediyse asal sayıdır
-
-    print(asallar)
-
-asal_yaz(range(1000))
-
-
-
-                        
+print(asal_bul(range(1000)))
