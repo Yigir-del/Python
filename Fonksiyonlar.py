@@ -166,5 +166,22 @@ print(next(iter))
 
 
 
+class Kareler:
+    def __init__(self,max):
+        self.max = max
+        self.counter = 0
 
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if self.counter < self.max:
+            self.counter += 1   
+            return self.counter ** 2
+        else:
+            raise StopIteration
+
+kareler = Kareler(5)
+for i in kareler:
+    print(i)
                         
