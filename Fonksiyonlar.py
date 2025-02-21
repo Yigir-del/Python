@@ -184,4 +184,29 @@ class Kareler:
 kareler = Kareler(5)
 for i in kareler:
     print(i)
+
+
+
+class Asallar():
+    def __init__(self):
+        self.sayi = 2  # Başlangıç olarak 2'yi alıyoruz (ilk asal sayı)
+    
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        while self.sayi < 1000:
+            # Asal sayıları kontrol etmek için 2 ile sayının karekökü arasındaki sayılarla modülüs alıyoruz
+            sorgu = (self.sayi % i == 0 for i in range(2, int(self.sayi ** 0.5) + 1))
+            if not any(sorgu):  # Eğer sayı asal ise
+                sonuc = self.sayi
+                self.sayi += 1
+                return sonuc
+            self.sayi += 1  # Eğer asal değilse bir sonraki sayıyı kontrol et
+        raise StopIteration
+
+asal = Asallar()
+for i in asal:
+    print(i)
+
                         
