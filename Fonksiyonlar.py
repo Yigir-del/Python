@@ -128,3 +128,43 @@ def asal_bul(iter):
     return asallar
 
 print(asal_bul(range(1000)))
+
+
+
+
+                    ***************************************************Iteratorlar***************************************************
+
+class My_iter:
+    def __init__(self,limit):
+        self.limit = limit
+        self.s1 = 1
+        self.s2 = 1
+        self.count = 1
+
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if self.count <= self.limit:
+            if self.count == 1 or self.count == 2:
+                self.count += 1
+                return self.s1
+            else:
+                    toplam = self.s1 + self.s2
+                    self.s1 = self.s2
+                    self.s2 = toplam
+                    self.count += 1
+                    return toplam
+        else:
+            raise StopIteration
+
+iter = My_iter(10)
+for i in iter:
+    print(i)
+print(next(iter))
+
+
+
+
+
+                        
