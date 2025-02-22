@@ -101,3 +101,46 @@ print("OS Name:", os.name)
 if hasattr(os, 'uname'):
     print("Uname Bilgisi:", os.uname())
 
+
+******************************************************************sys*********************************************************************************
+
+import sys
+
+# 1. sys.argv: Komut satırından argüman alma
+print("Komut Satırı Argümanları:", sys.argv)
+
+# 2. sys.exit(): Programı belirli bir kod ile sonlandırma
+def exit_example():
+    print("Programdan çıkılıyor...")
+    sys.exit(0)  # 0 başarılı çıkışı temsil eder
+
+# 3. sys.platform: İşletim sistemini öğrenme
+print("İşletim Sistemi:", sys.platform)
+
+# 4. sys.version: Python sürümünü öğrenme
+print("Python Sürümü:", sys.version)
+
+# 5. sys.path: Python'un arama yollarını gösterme
+print("Python Modül Arama Yolları:", sys.path)
+
+# 6. sys.getsizeof(): Bir nesnenin bellek boyutunu öğrenme
+data = "Merhaba"
+print(f"'{data}' değişkeninin boyutu: {sys.getsizeof(data)} bayt")
+
+# 7. sys.stdout: Konsola yazı yazma (standart çıktı)
+sys.stdout.write("Bu bir standart çıktı örneğidir.\n")
+
+# 8. sys.stdin: Kullanıcıdan giriş alma
+# print("Bir şey yazın: ")
+# user_input = sys.stdin.readline()
+# print("Girdiğiniz: ", user_input)
+
+# 9. sys.stderr: Hata mesajlarını yazdırma
+sys.stderr.write("Bu bir hata mesajıdır!\n")
+
+# 10. sys.getrecursionlimit(): Özyineleme sınırını öğrenme
+print("Mevcut özyineleme sınırı:", sys.getrecursionlimit())
+
+# 11. sys.setrecursionlimit(): Özyineleme sınırını değiştirme
+sys.setrecursionlimit(2000)
+print("Yeni özyineleme sınırı:", sys.getrecursionlimit())
