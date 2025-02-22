@@ -1,3 +1,5 @@
+******************************************************************DateTime*********************************************************************************
+
 from datetime import datetime, timedelta
 
 # Şu anki zamanı al
@@ -41,3 +43,61 @@ print("Bir gün önceki tarih:", bir_gun_once)
 tarih_str = "2025-02-22 15:30:00"
 parsed_tarih = datetime.strptime(tarih_str, "%Y-%m-%d %H:%M:%S")
 print("Parse edilen tarih:", parsed_tarih)
+
+
+******************************************************************OS*********************************************************************************
+import os
+from datetime import datetime
+
+# Geçerli çalışma dizinini al
+print("Geçerli Dizin:", os.getcwd())
+
+# Dizin içeriğini listele
+print("Dizin İçeriği:")
+for i in os.listdir():
+    print(i)
+
+# Yeni klasör oluşturma
+# os.mkdir("DenemeOs")
+# os.makedirs("Deneme2/Deneme3")
+
+# Klasör silme
+# os.rmdir("Deneme2")
+# os.removedirs("Deneme2/Deneme3")
+
+# Dosya yeniden adlandırma
+# os.rename("Deneme.txt", "Deneme2.txt")
+
+# Dosyanın son değiştirilme zamanını al
+# print("Dosya Son Değiştirme Zamanı:", datetime.fromtimestamp(os.stat("Deneme2.txt").st_mtime))
+
+# Belirli bir dizindeki dosyaları ve klasörleri yürü
+print("Klasör içeriği taranıyor:")
+for klasor_yolu, klasor_isimleri, dosya_isimleri in os.walk("c:/Users/ygt/OneDrive/Masaüstü"):
+    print("Klasör Yolu:", klasor_yolu)
+    print("Klasörler:", klasor_isimleri)
+    print("Dosyalar:", dosya_isimleri)
+    
+    # Belirli bir uzantıya sahip dosyaları filtrele
+    for i in dosya_isimleri:
+        if i.endswith(".txt"):
+            print("Metin Dosyası:", i)
+
+# Belirli bir yolun dosya mı klasör mü olduğunu kontrol etme
+yol = "c:/Users/ygt/OneDrive/Masaüstü"
+if os.path.isfile(yol):
+    print(f"{yol} bir dosyadır.")
+elif os.path.isdir(yol):
+    print(f"{yol} bir klasördür.")
+
+# Ortam değişkenlerini listeleme
+print("Ortam Değişkenleri:")
+for anahtar, deger in os.environ.items():
+    print(f"{anahtar}: {deger}")
+
+# Sistem bilgisini alma
+print("Sistem Bilgisi:")
+print("OS Name:", os.name)
+if hasattr(os, 'uname'):
+    print("Uname Bilgisi:", os.uname())
+
