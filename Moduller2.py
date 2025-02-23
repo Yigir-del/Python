@@ -196,8 +196,35 @@ if section_element:
                         print(f"{text}\n")
 
 
+**********************************************************************IMDB**********************************************************************************
+import requests
+from bs4 import BeautifulSoup
+import sys
 
+sys.stdout.reconfigure(encoding="utf-8")
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
+}
 
+url = "https://www.imdb.com/chart/top/?ref_=nv_mv_250"
+
+response = requests.get(url,headers=headers)
+if response.status_code == 200:
+    print("Successful")
+else:
+    print("Connection failed. Code = {}".format(response.status_code))
+    sys.exit()
+
+response.encoding = response.apparent_encoding
+
+html_icerigi = response.content
+soup = BeautifulSoup(html_icerigi, "html.parser")
+
+li = soup.find_all("h3",{"class":"ipc-title__text"})
+if li:
+    for i in li:
+        moviename = i.text
+        print(moviename)
 
 
 
