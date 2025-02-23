@@ -79,3 +79,126 @@ print(f"Sayfa Başlığı: {title.text.strip()}")
 
 # Page scraping'in sonuna geldik.
 print("Web sayfası başarıyla işlendi.")
+
+
+
+
+******************************************************************************OMU************************************************************************************
+
+
+import requests
+from bs4 import BeautifulSoup
+import sys
+
+sys.stdout.reconfigure(encoding="utf-8")
+
+url = "https://oidb.omu.edu.tr/tr"
+response = requests.get(url)
+
+if response.status_code == 200:
+    print("Successful")
+else:
+    print(f"Request failed: Hata kodu = {response.status_code}")
+    sys.exit()
+
+response.encoding = response.apparent_encoding
+
+html_icerigi = response.content
+
+soup = BeautifulSoup(html_icerigi, "html.parser")
+
+# 'news' class'ı ile başlayan section etiketini buluyoruz
+section = soup.find("section", class_="news")
+
+# İçindeki her bir haber öğesini bulalım
+if section:
+    news_items = section.find_all("div", class_="news-item")
+    for news in news_items:
+        # İçeriği yazdıralım
+        title = news.find("h2", class_="title")
+        if title:
+            link = title.find("a")
+            if link:
+                print(f"Metin: {link.get_text(strip=True)}")
+a = input("q: ya bas cik")
+if a == "q":
+    sys.exit
+
+
+*************************************************************************ODÜ******************************************************************************************
+
+import requests
+from bs4 import BeautifulSoup
+import sys
+
+sys.stdout.reconfigure(encoding="utf-8")
+
+url = "https://www.odu.edu.tr/"
+
+response = requests.get(url)
+if response.status_code == 200:
+    print("Successful!")
+else:
+    print("Connection failed. Code:{}".format(response.status_code))
+    sys.exit()
+response.encoding = response.apparent_encoding
+html_icerigi = response.content
+soup = BeautifulSoup(html_icerigi,"html.parser")
+
+divs = soup.find("div",{"class":"col-md-6"})
+
+if divs:
+    announcements_items = divs.find_all("a",target = "_blank")
+    for news in announcements_items:
+        if news:
+            print(f"Metin: {news.get_text(strip=True)}")
+
+a = input("Cikmak icin: 'q' bas enterla")
+if a == "q":
+    sys.exit
+
+
+
+**********************************************************************AÜ**********************************************************************************
+
+
+import requests
+from bs4 import BeautifulSoup
+import sys
+
+sys.stdout.reconfigure(encoding = "utf-8")
+
+url = "https://oidb.ankara.edu.tr/"
+
+response = requests.get(url)
+if response.status_code == 200:
+    print("Successful!")
+else:
+    print("Connection failed. Hata kodu {}".format(response.status_code))
+    sys.exit()
+response.encoding = response.apparent_encoding
+html_content = response.content
+soup = BeautifulSoup(html_content, "html.parser")
+
+section_element = soup.find("section", {"class": "fusion-columns columns fusion-columns-1 columns-1"})
+if section_element:
+    news_articles = soup.find_all("article", {"class": "post fusion-column column col col-lg-12 col-md-12 col-sm-12"})
+    for article in news_articles:
+        recent_posts = article.find_all("div", {"class": "recent-posts-content"})
+        if recent_posts:
+            for post in recent_posts:
+                post_title = post.find("h4", {"class": "entry-title"})
+                if post_title:
+                    links = post_title.find_all("a")
+                    for link in links:
+                        href = link.get("href")
+                        text = link.text
+                        print(f"{text}\n")
+
+
+
+
+
+
+
+
