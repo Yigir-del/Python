@@ -226,6 +226,31 @@ if li:
         moviename = i.text
         print(moviename)
 
+**********************************************************************Doviz**********************************************************************************
 
+import requests
+from bs4 import BeautifulSoup
+import sys
 
+sys.stdout.reconfigure(encoding="utf-8")
+url = "https://www.doviz.com/"
+
+response = requests.get(url)
+if response.status_code == 200:
+    print("Successful")
+else:
+    print("Connection failed Error Code: {}".format(response.status_code))
+
+response.encoding = response.apparent_encoding
+html_icerigi = response.content
+soup = BeautifulSoup(html_icerigi, "html.parser")
+
+degerler = soup.find_all("span", {"class": "value"})
+if degerler:
+    for i in degerler:
+        # data-socket-key özelliği varsa almak için kontrol
+        data_socket_key = i.get("data-socket-key", "N/A")  # Eğer yoksa 'N/A' döner
+        print(f"{data_socket_key} : {i.text.strip()}")
+else:
+    print("Döviz verisi bulunamadı.")
 
