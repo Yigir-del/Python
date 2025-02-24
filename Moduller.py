@@ -102,6 +102,20 @@ if hasattr(os, 'uname'):
     print("Uname Bilgisi:", os.uname())
 
 
+
+
+import os
+import sys
+g = 0
+for konum,klasorler,dosyalar in os.walk("c:"):
+    for dosya in dosyalar:
+        dosya_kucuk = dosya.lower()
+        if dosya.endswith("pdf") or dosya.endswith("mp4") or dosya.endswith("txt"):
+            print(konum)
+            print(dosya)
+    
+
+
 ******************************************************************sys*********************************************************************************
 
 import sys
